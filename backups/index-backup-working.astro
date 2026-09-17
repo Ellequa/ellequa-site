@@ -1,0 +1,425 @@
+---
+const images = {
+  hero: "/images/01_under0038.jpg",
+  intro: "/images/02_akash_lux0001.jpg",
+  editorial: "/images/08_window_gaze_bnw.jpg",
+  art: "/images/10_denim_floor.jpg",
+  location: "/images/12_4seassteps.jpg",
+  archive: "/images/07_dreamybedglow.jpg"
+};
+---
+
+<html lang="en">
+<head>
+  <title>Ellequa</title>
+  <meta name="description" content="Ellequa. A visual archive of light, movement and atmosphere." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+
+<header>
+  <div class="brand">Ellequa</div>
+
+  <nav>
+    <a href="#collection">Collection</a>
+    <a href="#archive">Archive</a>
+  </nav>
+</header>
+
+
+<main>
+
+<section class="hero">
+
+<img src={images.hero} alt="Ellequa" />
+
+<div class="hero-overlay">
+
+<h1>Ellequa</h1>
+
+<p>
+Moments between light and shadow.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="statement">
+
+<div class="statement-image">
+
+<img src={images.intro} alt="Ellequa portrait" />
+
+</div>
+
+
+<div class="statement-text">
+
+<h2>
+A visual diary
+</h2>
+
+<p>
+A study of light, movement and quiet moments.
+</p>
+
+</div>
+
+</section>
+
+
+
+
+<section id="collection" class="collection">
+
+<div class="large-image">
+<img src={images.location} alt="Ellequa collection" />
+</div>
+
+
+<div>
+<img src={images.editorial} alt="Ellequa editorial" />
+</div>
+
+
+<div>
+<img src={images.art} alt="Ellequa study" />
+</div>
+
+
+</section>
+
+
+
+
+<section id="archive" class="archive">
+
+<img src={images.archive} alt="Ellequa archive" />
+
+
+<div class="archive-content">
+
+<h2>
+Selected works
+</h2>
+
+
+<p>
+Additional sessions and private studies.
+</p>
+
+
+<a href="https://onlyfans.com/ellequa" target="_blank">
+Enter archive
+</a>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+© Ellequa
+
+</footer>
+
+
+
+<style>
+
+:global(body){
+
+margin:0;
+background:#11100f;
+color:#f4efe7;
+font-family:Arial, Helvetica, sans-serif;
+
+}
+
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:35px 60px;
+display:flex;
+justify-content:space-between;
+z-index:10;
+box-sizing:border-box;
+
+}
+
+
+.brand{
+
+font-family:Georgia, serif;
+font-size:30px;
+
+}
+
+
+
+nav{
+
+display:flex;
+gap:45px;
+
+}
+
+
+nav a{
+
+color:#f4efe7;
+text-decoration:none;
+letter-spacing:2px;
+font-size:13px;
+
+}
+
+
+
+.hero{
+
+height:100vh;
+position:relative;
+
+}
+
+
+.hero img{
+
+height:100%;
+width:100%;
+object-fit:cover;
+
+}
+
+
+.hero:after{
+
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+to top,
+rgba(0,0,0,.6),
+transparent 55%
+);
+
+}
+
+
+
+.hero-overlay{
+
+position:absolute;
+bottom:10%;
+left:8%;
+z-index:2;
+
+}
+
+
+
+.hero h1{
+
+font-family:Georgia,serif;
+font-size:clamp(80px,12vw,160px);
+font-weight:normal;
+margin:0;
+
+}
+
+
+.hero p{
+
+font-size:18px;
+letter-spacing:4px;
+
+}
+
+
+
+
+
+.statement{
+
+max-width:1200px;
+margin:180px auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:100px;
+align-items:center;
+padding:0 50px;
+
+}
+
+
+.statement img{
+
+width:100%;
+
+}
+
+
+
+h2{
+
+font-family:Georgia,serif;
+font-size:60px;
+font-weight:normal;
+
+}
+
+
+.statement p,
+.archive p{
+
+font-size:19px;
+line-height:2;
+color:#bdb6ae;
+
+}
+
+
+
+
+.collection{
+
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:35px;
+padding:50px;
+
+}
+
+
+.collection img{
+
+width:100%;
+display:block;
+
+}
+
+
+
+
+.collection div:nth-child(3){
+
+margin-top:120px;
+
+}
+
+
+
+
+.archive{
+
+position:relative;
+margin-top:180px;
+
+}
+
+
+.archive img{
+
+width:100%;
+height:90vh;
+object-fit:cover;
+filter:brightness(.65);
+
+}
+
+
+
+.archive-content{
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+
+}
+
+
+.archive a{
+
+display:inline-block;
+margin-top:30px;
+padding:16px 40px;
+border:1px solid #f4efe7;
+color:#f4efe7;
+text-decoration:none;
+letter-spacing:3px;
+font-size:13px;
+
+}
+
+
+
+
+footer{
+
+padding:60px;
+text-align:center;
+color:#777;
+
+}
+
+
+
+
+@media(max-width:800px){
+
+header{
+
+padding:25px;
+
+}
+
+
+.statement{
+
+grid-template-columns:1fr;
+padding:25px;
+
+}
+
+
+.collection{
+
+grid-template-columns:1fr;
+padding:25px;
+
+}
+
+
+.collection div:nth-child(3){
+
+margin-top:0;
+
+}
+
+
+}
+
+</style>
+
+
+</body>
+</html>
