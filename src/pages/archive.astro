@@ -3,10 +3,18 @@ import { Image } from 'astro:assets';
 import morning from '../../public/images/06_under0043.jpg';
 import denim from '../../public/images/10_denim_floor.jpg';
 import shore from '../../public/images/05_kneel_coco.jpg';
+import water from '../../public/images/14_office0029.jpg';
+import portrait from '../../public/images/02_akash_ lux0001.jpg';
+import curtain from '../../public/images/07_dreamybedglow.jpg';
+import gold from '../../public/images/03_ricedrem1.jpg';
 const studies = [
-  { image: morning, title: 'Morning light', note: 'Interior study', alt: 'Ellequa seated beside a sunlit window overlooking green foliage.' },
-  { image: denim, title: 'In monochrome', note: 'Portrait study', alt: 'Black-and-white photograph of Ellequa reclining on a wooden floor in denim.' },
-  { image: shore, title: 'By the water', note: 'On location', alt: 'Ellequa beneath a thatched beach shelter beside the water.' },
+  { image: morning, title: 'Morning light', note: 'Interior study', placement: 'opening', sizes: '(max-width: 700px) 88vw, 50vw', alt: 'Ellequa seated beside a sunlit window overlooking green foliage.' },
+  { image: denim, title: 'In monochrome', note: 'Portrait study', placement: 'monochrome', sizes: '(max-width: 700px) 75vw, 40vw', alt: 'Black-and-white photograph of Ellequa reclining on a wooden floor in denim.' },
+  { image: water, title: 'Water study', note: 'Light & movement', placement: 'feature', sizes: '(max-width: 700px) 92vw, 75vw', alt: 'Ellequa beneath falling water, with sunlight and a red flower in her hair.' },
+  { image: shore, title: 'By the water', note: 'On location', placement: 'shore', sizes: '(max-width: 700px) 78vw, 40vw', alt: 'Ellequa beneath a thatched beach shelter beside the water.' },
+  { image: portrait, title: 'Held close', note: 'Portrait', placement: 'portrait', sizes: '(max-width: 700px) 73vw, 32vw', alt: 'Ellequa looking toward the camera in a softly lit room.' },
+  { image: curtain, title: 'Behind the curtain', note: 'Interior light', placement: 'curtain', sizes: '(max-width: 700px) 86vw, 48vw', alt: 'Ellequa reclining beside sheer curtains in a sunlit room.' },
+  { image: gold, title: 'Late light', note: 'Study in gold', placement: 'closing', sizes: '(max-width: 700px) 70vw, 32vw', alt: 'Ellequa standing in a field in a golden dress, backlit by the late sun.' },
 ];
 ---
 <!doctype html>
@@ -23,14 +31,14 @@ const studies = [
     <meta property="og:title" content="Archive — Ellequa" />
     <meta property="og:description" content="Selected photographs, video work and further studies from the Ellequa archive." />
     <meta property="og:url" content="https://ellequa.com/archive" />
-    <meta property="og:image" content="https://ellequa.com/images/og-ellequa.jpg" />
+    <meta property="og:image" content="https://ellequa.com/images/ellequa-social-1200x630.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Ellequa archive" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Archive — Ellequa" />
     <meta name="twitter:description" content="Selected photographs, video work and further studies from the Ellequa archive." />
-    <meta name="twitter:image" content="https://ellequa.com/images/og-ellequa.jpg" />
+    <meta name="twitter:image" content="https://ellequa.com/images/ellequa-social-1200x630.jpg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body id="top">
@@ -49,8 +57,8 @@ const studies = [
       </div>
       <section class="studies" aria-label="Photographic studies">
         {studies.map((study, index) => (
-          <figure>
-            <Image src={study.image} alt={study.alt} widths={[400, 700, 900]} sizes="(max-width: 700px) 85vw, (max-width: 1000px) 42vw, 350px" width={700} format="webp" quality={85} loading={index === 0 ? 'eager' : 'lazy'} />
+          <figure class={study.placement}>
+            <Image src={study.image} alt={study.alt} widths={[400, 700, 1000, 1400].filter((width) => width <= study.image.width)} sizes={study.sizes} width={700} format="webp" quality={85} loading={index === 0 ? 'eager' : 'lazy'} />
             <figcaption><span>0{index + 1} / {study.title}</span><span>{study.note}</span></figcaption>
           </figure>
         ))}
@@ -88,9 +96,15 @@ const studies = [
   .archive-heading { border-top: 1px solid #d7d2c7; padding-top: 24px; margin-bottom: 42px; display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
   h1, h2 { font: 400 22px Georgia, serif; letter-spacing: -.02em; }
   p { font-size: 11px; line-height: 1.6; color: #6b685f; }
-  .studies { display: grid; grid-template-columns: 1fr .87fr 1fr; gap: 5%; align-items: start; padding-bottom: 80px; }
-  .studies figure:nth-child(2) { margin-top: 95px; }
-  .studies figure:nth-child(3) { margin-top: 35px; }
+  /* Each plate has an explicit position; document order remains the reading order. */
+  .studies { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 110px; align-items: start; padding-bottom: 130px; }
+  .opening { grid-column: 1 / 7; grid-row: 1; }
+  .monochrome { grid-column: 8 / 13; grid-row: 1; margin-top: 170px; }
+  .feature { grid-column: 2 / 11; grid-row: 2; margin-block: 35px; }
+  .shore { grid-column: 8 / 13; grid-row: 3; }
+  .portrait { grid-column: 2 / 6; grid-row: 4; }
+  .curtain { grid-column: 7 / 13; grid-row: 4; margin-top: 120px; }
+  .closing { grid-column: 4 / 8; grid-row: 5; margin-top: 25px; }
   figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 10px; line-height: 1.6; color: #6b685f; }
   .private-index { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-block: 1px solid #d7d2c7; padding-block: 28px; }
   .private-index p { margin-top: 9px; }
@@ -104,8 +118,9 @@ const studies = [
   .skip-link:focus { position: fixed; left: 20px; top: 20px; z-index: 20; padding: 15px; background: #f3f0e9; }
   @media (max-width: 1000px) {
     .wrap { width: calc(100% - 64px); }
-    .studies { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .studies figure:nth-child(3) { width: 85%; margin-top: 0; }
+    .studies { column-gap: 16px; row-gap: 80px; }
+    .monochrome { margin-top: 110px; }
+    .curtain { margin-top: 85px; }
   }
   @media (max-width: 700px) {
     .wrap { width: calc(100% - 36px); }
@@ -114,10 +129,15 @@ const studies = [
     nav { gap: 24px; }
     nav a { font-size: 10px; }
     .archive-heading { align-items: start; flex-direction: column; gap: 9px; margin-bottom: 30px; }
-    .studies { grid-template-columns: 1fr; gap: 40px; padding-bottom: 50px; }
-    .studies figure:first-child { width: 94%; }
-    .studies figure:nth-child(2) { width: 80%; justify-self: end; margin-top: 0; }
-    .studies figure:nth-child(3) { width: 92%; }
+    .studies { grid-template-columns: 1fr; gap: 48px; padding-bottom: 80px; }
+    .studies figure { grid-column: 1; grid-row: auto; margin: 0; }
+    .studies .opening { width: 96%; }
+    .studies .monochrome { width: 82%; justify-self: end; }
+    .studies .feature { width: 100%; margin-block: 20px; }
+    .studies .shore { width: 85%; justify-self: end; }
+    .studies .portrait { width: 80%; }
+    .studies .curtain { width: 94%; justify-self: end; }
+    .studies .closing { width: 76%; justify-self: center; margin-top: 12px; }
     .private-index { align-items: start; flex-direction: column; gap: 14px; padding-block: 24px; }
     footer { min-height: 100px; gap: 10px; }
     footer .brand { font-size: 21px; }
