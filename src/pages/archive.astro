@@ -7,6 +7,18 @@ import water from '../../public/images/14_office0029.jpg';
 import portrait from '../../public/images/02_akash_ lux0001.jpg';
 import curtain from '../../public/images/07_dreamybedglow.jpg';
 import gold from '../../public/images/03_ricedrem1.jpg';
+import busStop from '../../public/images/on-the-way-home-01-bus-stop.jpg';
+import bench from '../../public/images/on-the-way-home-02-bench.jpg';
+import heels from '../../public/images/on-the-way-home-03-heels.jpg';
+import cafeStreet from '../../public/images/on-the-way-home-04-cafe-street.jpg';
+import scooter from '../../public/images/on-the-way-home-05-scooter.jpg';
+const homeStory = [
+  { image: busStop, title: 'Waiting', note: 'After-hours', placement: 'story-opening', sizes: '(max-width: 700px) 92vw, (min-width: 1272px) 638px, 55vw', alt: 'On the Way Home: waiting at a bus stop.' },
+  { image: bench, title: 'After the music', note: 'A quiet pause', placement: 'story-pause', sizes: '(max-width: 700px) 80vw, (min-width: 1272px) 499px, 43vw', alt: 'On the Way Home: a quiet pause on a bench.' },
+  { image: heels, title: 'Almost home', note: 'Between leaving and arriving', placement: 'story-centre', sizes: '(max-width: 700px) 92vw, (min-width: 1272px) 673px, 58vw', alt: 'On the Way Home: pausing to adjust a shoe.' },
+  { image: cafeStreet, title: 'Morning streets', note: 'The city waking', placement: 'story-street', sizes: '(max-width: 700px) 82vw, (min-width: 1272px) 487px, 42vw', alt: 'On the Way Home: a morning street beside a café.' },
+  { image: scooter, title: 'Daybreak', note: 'Home soon', placement: 'story-closing', sizes: '(max-width: 700px) 76vw, (min-width: 1272px) 418px, 36vw', alt: 'On the Way Home: a scooter at daybreak.' },
+];
 const studies = [
   { image: morning, title: 'Morning light', note: 'Interior study', placement: 'opening', sizes: '(max-width: 700px) 88vw, 50vw', alt: 'Ellequa seated beside a sunlit window overlooking green foliage.' },
   { image: denim, title: 'In monochrome', note: 'Portrait study', placement: 'monochrome', sizes: '(max-width: 700px) 75vw, 40vw', alt: 'Black-and-white photograph of Ellequa reclining on a wooden floor in denim.' },
@@ -62,6 +74,21 @@ const studies = [
             <figcaption><span>0{index + 1} / {study.title}</span><span>{study.note}</span></figcaption>
           </figure>
         ))}
+      </section>
+      <section class="home-story" aria-labelledby="home-story-title">
+        <div class="story-intro">
+          <p class="story-label">01 — STUDY</p>
+          <h2 id="home-story-title">On the Way Home</h2>
+          <p>A study in after-hours light, empty streets and the space between leaving and arriving.</p>
+        </div>
+        <div class="story-sequence">
+          {homeStory.map((study, index) => (
+            <figure class={study.placement}>
+              <Image src={study.image} alt={study.alt} widths={[400, 700, 1000, 1300].filter((width) => width <= study.image.width)} sizes={study.sizes} width={700} format="webp" quality={85} loading="lazy" />
+              <figcaption><span>0{index + 1} / {study.title}</span><span>{study.note}</span></figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
       <section class="private-index" aria-labelledby="private-title">
         <div>
@@ -142,5 +169,31 @@ const studies = [
     footer { min-height: 100px; gap: 10px; }
     footer .brand { font-size: 21px; }
     footer > span, .return-link { font-size: 9px; }
+  }
+  .home-story { padding-bottom: 130px; }
+  .story-intro { border-top: 1px solid #d7d2c7; padding-top: 28px; margin-bottom: 65px; }
+  .story-intro .story-label { font-size: 10px; letter-spacing: .12em; margin-bottom: 16px; }
+  .story-intro h2 { margin-bottom: 14px; }
+  .story-intro > p:last-child { max-width: 410px; }
+  .story-sequence { display: flex; flex-direction: column; align-items: flex-start; gap: 100px; }
+  .story-opening { width: 55%; }
+  .story-pause { width: 43%; align-self: flex-end; }
+  .story-centre { width: 58%; margin-left: 8%; margin-block: 35px; }
+  .story-street { width: 42%; margin-right: 5%; align-self: flex-end; }
+  .story-closing { width: 36%; margin-left: 22%; margin-top: 20px; }
+  .home-story figcaption > span:last-child { text-align: right; }
+  @media (max-width: 1000px) {
+    .story-sequence { gap: 80px; }
+  }
+  @media (max-width: 700px) {
+    .home-story { padding-bottom: 80px; }
+    .story-intro { margin-bottom: 40px; }
+    .story-sequence { gap: 52px; }
+    .story-sequence figure { margin-inline: 0; }
+    .story-sequence .story-opening { width: 100%; }
+    .story-sequence .story-pause { width: 87%; }
+    .story-sequence .story-centre { width: 100%; margin-block: 16px; }
+    .story-sequence .story-street { width: 89%; }
+    .story-sequence .story-closing { width: 82%; align-self: center; margin-top: 12px; }
   }
 </style>
