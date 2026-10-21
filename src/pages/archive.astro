@@ -19,6 +19,12 @@ const homeStory = [
   { image: cafeStreet, title: 'Morning streets', note: 'The city waking', placement: 'story-street', sizes: '(max-width: 700px) 82vw, (min-width: 1272px) 487px, 42vw', alt: 'On the Way Home: a morning street beside a café.' },
   { image: scooter, title: 'Daybreak', note: 'Home soon', placement: 'story-closing', sizes: '(max-width: 700px) 76vw, (min-width: 1272px) 418px, 36vw', alt: 'On the Way Home: a scooter at daybreak.' },
 ];
+const outsideStory = [
+  { src: '/images/shower-bliss-01-outside.jpg', placement: 'story-opening', alt: 'Outside — establishing frame.' },
+  { src: '/images/shower-bliss-02-back-view.jpg', placement: 'story-pause', alt: 'Outside — full back view.' },
+  { src: '/images/shower-bliss-03-sunlit-closeup.jpg', placement: 'story-centre', alt: 'Outside — sunlit close-up.' },
+  { src: '/images/shower-bliss-04-over-shoulder.jpg', placement: 'story-closing', alt: 'Outside — over-the-shoulder frame.' },
+];
 const studies = [
   { image: morning, title: 'Morning light', note: 'Interior study', placement: 'opening', sizes: '(max-width: 700px) 88vw, 50vw', alt: 'Ellequa seated beside a sunlit window overlooking green foliage.' },
   { image: denim, title: 'In monochrome', note: 'Portrait study', placement: 'monochrome', sizes: '(max-width: 700px) 75vw, 40vw', alt: 'Black-and-white photograph of Ellequa reclining on a wooden floor in denim.' },
@@ -86,6 +92,20 @@ const studies = [
             <figure class={study.placement}>
               <Image src={study.image} alt={study.alt} widths={[400, 700, 1000, 1300].filter((width) => width <= study.image.width)} sizes={study.sizes} width={700} format="webp" quality={85} loading="lazy" />
               <figcaption><span>0{index + 1} / {study.title}</span><span>{study.note}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+      <section class="home-story" aria-labelledby="outside-story-title">
+        <div class="story-intro">
+          <h2 id="outside-story-title">Outside</h2>
+          <p>Bali does have its perks.</p>
+        </div>
+        <div class="story-sequence">
+          {outsideStory.map((frame, index) => (
+            <figure class={frame.placement}>
+              <img src={frame.src} alt={frame.alt} loading="lazy" decoding="async" />
+              <figcaption>{String(index + 1).padStart(2, '0')}</figcaption>
             </figure>
           ))}
         </div>
