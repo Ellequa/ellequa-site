@@ -1,0 +1,268 @@
+
+---
+const subscriptionUrl = 'https://onlyfans.com/ellequa';
+const pageUrl = 'https://ellequa.com/private-preview3';
+const previewImage = 'https://ellequa.com/images/private-preview3.jpg';
+const title = 'Ellequa | The private collection';
+const description = 'A little closer. Explore Ellequa on OnlyFans.';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f0e9" />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ellequa" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={previewImage} />
+    <meta property="og:image:width" content="1660" />
+    <meta property="og:image:height" content="1328" />
+    <meta property="og:image:alt" content="Blurred preview of Ellequa's private collection" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={previewImage} />
+    <meta name="twitter:image:alt" content="Blurred preview of Ellequa's private collection" />
+  </head>
+
+  <body>
+    <header class="wrap">
+      <a class="brand" href="/" aria-label="Ellequa home">Ellequa</a>
+      <span class="age-label">18+ only</span>
+    </header>
+
+    <main class="wrap">
+      <section class="private-card" aria-labelledby="private-title">
+        <a
+          class="preview"
+          href={subscriptionUrl}
+          aria-label="Visit Ellequa on OnlyFans"
+        >
+          <img
+            src="/images/private-preview2.jpg"
+            alt="Blurred preview of Ellequa's private collection"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <span class="preview-label">The private collection</span>
+        </a>
+
+        <div class="invitation">
+          <p class="eyebrow">ELLEQUA / PRIVATE</p>
+          <h1 id="private-title">A little closer.</h1>
+          <p class="description">
+            Find me on OnlyFans.
+          </p>
+          <a class="subscribe" href={subscriptionUrl}>
+            Visit my OnlyFans
+            <span aria-hidden="true">↗</span>
+          </a>
+          <p class="note">Subscription options are available on OnlyFans.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <a href="/">Back to the visual diary</a>
+      <span>© {new Date().getFullYear()} Ellequa</span>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f3f0e9;
+    color: #302f29;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :global(a:focus-visible) {
+    outline: 2px solid #887153;
+    outline-offset: 6px;
+  }
+
+  :global(h1),
+  :global(p) {
+    margin: 0;
+  }
+
+  .wrap {
+    width: min(calc(100% - 64px), 1000px);
+    margin-inline: auto;
+  }
+
+  header {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 26px;
+    letter-spacing: -1px;
+  }
+
+  .age-label {
+    font-size: 11px;
+    color: #6b685f;
+  }
+
+  main {
+    padding-block: 24px 56px;
+  }
+
+  .private-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .preview {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: #e5dfd3;
+    border-radius: 2px;
+  }
+
+  .preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .preview-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 14px;
+    background: #f3f0e9;
+    color: #302f29;
+    font-size: 11px;
+    letter-spacing: .03em;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+    font-size: 10px;
+    letter-spacing: .16em;
+    color: #6b685f;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+  }
+
+  .description {
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6b685f;
+  }
+
+  .subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 54px;
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: #302f29;
+    color: #f3f0e9;
+    font-size: 13px;
+  }
+
+  .subscribe:hover {
+    background: #514b3f;
+  }
+
+  .subscribe span {
+    font-size: 18px;
+  }
+
+  .note {
+    margin-top: 14px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #6b685f;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 80px;
+    border-top: 1px solid #d7d2c7;
+    font-size: 10px;
+    color: #6b685f;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .wrap {
+      width: calc(100% - 36px);
+    }
+
+    header {
+      min-height: 76px;
+    }
+
+    main {
+      padding-block: 8px 36px;
+    }
+
+    .private-card {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 480px;
+      margin-inline: auto;
+    }
+
+    .invitation {
+      padding-inline: 4px;
+    }
+
+    .subscribe {
+      margin-top: 22px;
+    }
+
+    footer {
+      font-size: 9px;
+    }
+  }
+</style>
